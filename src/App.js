@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { useFetch } from "./useFetch.js";
 
 function App() {
+  const [data, loading] = useFetch(
+    "https://www.hatchways.io/api/assessment/students"
+  );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ? (
+        "Loading..."
+      ) : (
+        <ul class="student-list">
+          {data.students.map(item => (
+            <li key={item.id}>
+              <img src={item.pic} alt="avatar" />
+              <h3>
+                {item.firstName} {item.lastName}
+              </h3>
+              <p>Email: {item.email}</p>
+              <p>Company: {item.company}</p>
+              <p>Skill: {item.skill}</p>
+              <p>
+                Average:
+                {item.grades.reduce((a, b) => Number(a) + Number(b)) /
+                  item.grades.length}
+                %
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
