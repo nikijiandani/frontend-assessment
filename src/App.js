@@ -2,22 +2,17 @@ import React from "react";
 import "./App.css";
 import { useFetch } from "./useFetch.js";
 
-function App() {
-  const [data, loading] = useFetch(
-    "https://www.hatchways.io/api/assessment/students"
-  );
+function StudentList(props) {
   return (
-    <div className="App">
-      {loading ? (
-        "Loading..."
-      ) : (
-        <ul class="student-list">
-          {data.students.map(item => (
-            <li key={item.id}>
-              <img src={item.pic} alt="avatar" />
-              <h3>
-                {item.firstName} {item.lastName}
-              </h3>
+    <ul className="student-list">
+      {props.data.students.map(item => (
+        <li key={item.id} className="student">
+          <img src={item.pic} alt="avatar" />
+          <section>
+            <h3>
+              {item.firstName} {item.lastName}
+            </h3>
+            <div>
               <p>Email: {item.email}</p>
               <p>Company: {item.company}</p>
               <p>Skill: {item.skill}</p>
@@ -27,10 +22,21 @@ function App() {
                   item.grades.length}
                 %
               </p>
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+          </section>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function App() {
+  const [data, loading] = useFetch(
+    "https://www.hatchways.io/api/assessment/students"
+  );
+  return (
+    <div className="App">
+      {loading ? "Loading..." : <StudentList data={data} />}
     </div>
   );
 }
