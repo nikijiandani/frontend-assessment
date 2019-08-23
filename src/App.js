@@ -20,13 +20,23 @@ const handleNameSearch = e => {
 
 const handleTagSearch = e => {
   e.preventDefault();
-  console.log(e);
+  let query = e.target.value.toUpperCase();
+  let students = document.getElementsByClassName("student");
+  for (var i = 0; i < students.length; i++) {
+    students[i]
+      .getElementsByClassName("tags")[0]
+      .innerText.toUpperCase()
+      .includes(query)
+      ? (students[i].style.display = "")
+      : (students[i].style.display = "none");
+  }
 };
 
 function StudentList(props) {
   return (
     <main className="student-list">
       <SearchByName handleNameSearch={handleNameSearch} />
+      <SearchByTag handleTagSearch={handleTagSearch} />
       <ul>
         {props.data.students.map((data, i) => (
           <Student data={data} key={i} />
