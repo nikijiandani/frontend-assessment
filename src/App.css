@@ -31,27 +31,61 @@
 .student-list li:last-child {
   border-bottom: none;
 }
-.student {
+.student-card {
   display: flex;
   align-items: center;
 }
-.student div {
+.student-card section {
+  width: 75%;
+}
+.student-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.student-card header button {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: rgb(189, 189, 189);
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+.student-card header button:hover {
+  color: black;
+}
+.student-details {
   margin-left: 1em;
   color: grey;
 }
-.student h3 {
+.student-card h3 {
   text-transform: uppercase;
   font-size: 2em;
   margin-bottom: 0.4em;
   margin-top: 0;
 }
-.student img {
+.student-card img {
   width: 6em;
   height: 6em;
   border: 1px solid grey;
   border-radius: 50%;
   margin: 1.5em;
 }
-.student p {
+.student-card p {
   margin: 0;
+}
+.collapsible {
+  display: none;
+}
+.collapsible .student-grades {
+  padding-left: 10.1em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+.collapsible .student-grades li {
+  border: none;
+  color: grey;
+}
+.active {
+  display: inline;
 }
