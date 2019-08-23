@@ -1,14 +1,22 @@
-.student-list {
-  width: 70%;
-  height: 80vh;
-  overflow-y: scroll;
+.container {
+  width: 50em;
+  height: 36em;
   background-color: white;
   margin: 5em auto;
   border: 1px solid lightgrey;
   border-radius: 8px;
   box-shadow: 1px 1px 1px grey;
+  display: flex;
+  flex-direction: column;
 }
-.student-list input {
+.container .search-bar {
+  width: 50em;
+  position: fixed;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.container input {
   width: 95%;
   border: none;
   font-size: 1em;
@@ -16,19 +24,21 @@
   margin: 0.5em;
   padding: 0.5em;
 }
-.student-list input:focus {
+.container input:focus {
   outline: none;
   border-bottom: 1px solid grey;
 }
-.student-list ul {
+.container ul {
   padding: 0;
   margin: 0;
+  margin-top: 5.9em;
+  overflow-y: scroll;
 }
-.student-list li {
+.container li {
   list-style-type: none;
   border-bottom: 1px solid lightgrey;
 }
-.student-list li:last-child {
+.container li:last-child {
   border-bottom: none;
 }
 .student-card {
@@ -36,7 +46,7 @@
   align-items: center;
 }
 .student-card section {
-  width: 75%;
+  width: 80%;
 }
 .student-card header {
   display: flex;

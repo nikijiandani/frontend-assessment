@@ -34,10 +34,12 @@ const handleTagSearch = e => {
 
 function StudentList(props) {
   return (
-    <main className="student-list">
-      <SearchByName handleNameSearch={handleNameSearch} />
-      <SearchByTag handleTagSearch={handleTagSearch} />
-      <ul>
+    <main className="container">
+      <section className="search-bar">
+        <SearchByName handleNameSearch={handleNameSearch} />
+        <SearchByTag handleTagSearch={handleTagSearch} />
+      </section>
+      <ul className="student-list">
         {props.data.students.map((data, i) => (
           <Student data={data} key={i} />
         ))}
