@@ -80,7 +80,6 @@
 .collapsible .student-grades {
   padding-left: 10.1em;
   margin-top: 0.5em;
-  margin-bottom: 1em;
 }
 .collapsible .student-grades li {
   border: none;
@@ -88,4 +87,22 @@
 }
 .active {
   display: inline;
+}
+.collapsible .add-tag {
+  width: 30%;
+  margin-left: 9.8em;
+  padding-left: 0.4em;
+}
+.tags {
+  width: 50%;
+  display: flex;
+  margin-left: -0.2em;
+  margin-top: 0.5em;
+}
+.tags p {
+  background-color: rgb(235, 235, 235);
+  color: grey;
+  padding: 0.5em;
+  margin: 0.25em;
+  border-radius: 3px;
 }

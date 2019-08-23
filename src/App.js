@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import { useFetch } from "./useFetch.js";
-import Search from "./components/Search.js";
+import SearchByName from "./components/SearchByName.js";
+import SearchByTag from "./components/SearchByTag.js";
 
-const handleChange = e => {
+const handleNameSearch = e => {
   e.preventDefault();
   let query = e.target.value.toUpperCase();
   let students = document.getElementsByClassName("student");
@@ -17,10 +18,25 @@ const handleChange = e => {
   }
 };
 
+const handleTagSearch = e => {
+  e.preventDefault();
+  let query = e.target.value.toUpperCase();
+  let students = document.getElementsByClassName("student");
+  for (var i = 0; i < students.length; i++) {
+    students[i]
+      .getElementsByClassName("tags")[0]
+      .innerText.toUpperCase()
+      .includes(query)
+      ? (students[i].style.display = "")
+      : (students[i].style.display = "none");
+  }
+};
+
 function StudentList(props) {
   return (
     <main className="student-list">
-      <Search handleChange={handleChange} />
+      <SearchByName handleNameSearch={handleNameSearch} />
+      <SearchByTag handleTagSearch={handleTagSearch} />
       <ul>
         {props.data.students.map((data, i) => (
           <Student data={data} key={i} />
@@ -31,14 +47,28 @@ function StudentList(props) {
 }
 
 function Student(props) {
+  const [active, setActive] = useState(false);
+  const [btn, setBtn] = useState("+");
+
   const handleClick = e => {
     e.preventDefault();
     setActive(!active);
     e.target.innerText === "+" ? setBtn("-") : setBtn("+");
   };
 
-  const [active, setActive] = useState(false);
-  const [btn, setBtn] = useState("+");
+  const onTagChange = e => {
+    if (e.key === "Enter") {
+      let newTag = document.createElement("p");
+      newTag.appendChild(document.createTextNode(e.target.value));
+      document
+        .querySelector(
+          `.${e.target.parentElement.children[0].lastChild.classList[0]}`
+        )
+        .appendChild(newTag);
+      e.target.value = "";
+    }
+  };
+
   return (
     <li key={props.data.id} className="student">
       <div className="student-card">
@@ -72,7 +102,14 @@ function Student(props) {
               Test {i + 1}: {test}%
             </li>
           ))}
+          <section className={"student-" + props.data.id + " tags"} />
         </ul>
+        <input
+          type="text"
+          placeholder="Add a tag"
+          className="add-tag"
+          onKeyPress={onTagChange}
+        />
       </section>
     </li>
   );
