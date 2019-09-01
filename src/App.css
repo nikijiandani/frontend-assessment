@@ -8,6 +8,9 @@
   box-shadow: 1px 1px 1px grey;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  right: 50%;
+  margin-right: -25em;
 }
 .container .search-bar {
   width: 50em;
