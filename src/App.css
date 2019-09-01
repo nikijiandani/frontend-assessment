@@ -106,8 +106,8 @@
 .tags {
   width: 50%;
   display: flex;
-  margin-left: -0.2em;
-  margin-top: 0.5em;
+  margin-left: 9.9em;
+  flex-wrap: wrap;
 }
 .tags p {
   background-color: rgb(235, 235, 235);
