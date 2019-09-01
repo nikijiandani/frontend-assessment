@@ -17,44 +17,74 @@ function StudentList(props) {
 
   const handleNameSearch = e => {
     e.preventDefault();
-    let query = e.target.value.toUpperCase();
-    let result;
-    console.log(list);
-    console.log(e.target.parentNode.parentNode.children[1].firstChild.value);
-    result = list.filter(
-      item =>
-        item.firstName.toUpperCase().includes(query) ||
-        item.lastName.toUpperCase().includes(query)
-    );
-    console.log(result);
-    if (e.target.parentNode.parentNode.children[1].firstChild.value !== "") {
-      result.filter(
-        item =>
-          item.tags.filter(tag =>
-            tag
-              .toUpperCase()
-              .includes(
-                e.target.parentNode.parentNode.children[1].firstChild.value
-              )
-          ).length > 0
-      );
+    let nameQuery = e.target.value.toUpperCase();
+    let tagQuery = e.target.parentNode.parentNode.children[1].firstChild.value.toUpperCase();
+    let output = searchProfileByName(nameQuery);
+    if (tagQuery !== "") {
+      let tagResults = searchProfileByTag(tagQuery);
+      const comparer = otherArr => {
+        return current => {
+          return (
+            otherArr.filter(other => {
+              return other.id === current.id;
+            }).length > 0
+          );
+        };
+      };
+      let result = output.filter(comparer(tagResults));
+      return setFilteredList(result);
     }
-    console.log(result);
-    setFilteredList(result);
+    setFilteredList(output);
+  };
+
+  const searchProfileByName = name => {
+    let result = [];
+    list.map(item => {
+      if (
+        item.firstName.toUpperCase().includes(name) ||
+        item.lastName.toUpperCase().includes(name)
+      ) {
+        result.push(item);
+      }
+    });
+    return result;
+  };
+
+  const searchProfileByTag = tag => {
+    let result = [];
+    list.map(item => {
+      item.tags.map(t => {
+        if (t.toUpperCase().includes(tag) && !result.includes(item)) {
+          result.push(item);
+        }
+      });
+    });
+    if (tag === "") {
+      result = list;
+    }
+    return result;
   };
 
   const handleTagSearch = e => {
     e.preventDefault();
-    let query = e.target.value.toUpperCase();
-    let result;
-    result = list.filter(
-      item =>
-        item.tags.filter(tag => tag.toUpperCase().includes(query)).length > 0
-    );
-    setFilteredList(result);
-    if (query === "") {
-      setFilteredList(list);
+    let tagQuery = e.target.value.toUpperCase();
+    let nameQuery = e.target.parentNode.parentNode.children[0].firstChild.value.toUpperCase();
+    let output = searchProfileByTag(tagQuery);
+    if (nameQuery !== "") {
+      let nameResults = searchProfileByName(nameQuery);
+      const comparer = otherArr => {
+        return current => {
+          return (
+            otherArr.filter(other => {
+              return other.id === current.id;
+            }).length > 0
+          );
+        };
+      };
+      let result = output.filter(comparer(nameResults));
+      return setFilteredList(result);
     }
+    setFilteredList(output);
   };
 
   const onTagChange = e => {
