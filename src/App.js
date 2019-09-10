@@ -91,7 +91,9 @@ function StudentList(props) {
     if (e.key === "Enter") {
       let newTag = e.target.value;
       let studentId = Number(
-        e.target.parentElement.children[1].getAttribute("data-student-id")
+        e.target.parentElement.parentElement.children[1].getAttribute(
+          "data-student-id"
+        )
       );
       let studentData = [...list];
 
@@ -178,12 +180,14 @@ function Student(props) {
             ))}
         </ul>
         <Tags tags={props.data.tags} id={props.data.id} />
-        <input
-          type="text"
-          placeholder="Add a tag"
-          className="add-tag"
-          onKeyPress={props.onTagChange}
-        />
+        <form onSubmit={e => e.preventDefault()}>
+          <input
+            type="text"
+            placeholder="Add a tag"
+            className="add-tag"
+            onKeyPress={props.onTagChange}
+          />
+        </form>
       </section>
     </li>
   );

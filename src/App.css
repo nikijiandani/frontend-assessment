@@ -1,31 +1,32 @@
 .container {
-  width: 50em;
-  height: 36em;
+  width: 100%;
+  height: 100vh;
   background-color: white;
-  margin: 5em auto;
   border: 1px solid lightgrey;
   border-radius: 8px;
   box-shadow: 1px 1px 1px grey;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  right: 50%;
-  margin-right: -25em;
 }
 .container .search-bar {
-  width: 50em;
-  position: fixed;
+  width: 100%;
   background-color: white;
-  overflow: hidden;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .container input {
-  width: 95%;
+  box-sizing: border-box;
+  width: 100%;
   border: none;
   font-size: 1em;
-  border-bottom: 1px solid lightgrey;
-  margin: 0.5em;
   padding: 0.5em;
+  border-radius: 8px;
+}
+.container form:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  border-bottom: 1px solid lightgray;
 }
 .container input:focus {
   outline: none;
@@ -34,7 +35,6 @@
 .container ul {
   padding: 0;
   margin: 0;
-  margin-top: 5.9em;
   overflow-y: scroll;
 }
 .container li {
@@ -46,10 +46,11 @@
 }
 .student-card {
   display: flex;
-  align-items: center;
+  padding: 0.3em;
 }
 .student-card section {
-  width: 80%;
+  width: 100%;
+  padding-top: 0.2em;
 }
 .student-card header {
   display: flex;
@@ -57,7 +58,7 @@
   align-items: baseline;
 }
 .student-card header button {
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-weight: bold;
   color: rgb(189, 189, 189);
   cursor: pointer;
@@ -68,21 +69,20 @@
   color: black;
 }
 .student-details {
-  margin-left: 1em;
   color: grey;
 }
 .student-card h3 {
   text-transform: uppercase;
-  font-size: 2em;
-  margin-bottom: 0.4em;
+  font-size: 1.5em;
+  margin-bottom: 0;
   margin-top: 0;
 }
 .student-card img {
-  width: 6em;
-  height: 6em;
+  width: 2.5em;
+  height: 2.5em;
   border: 1px solid grey;
   border-radius: 50%;
-  margin: 1.5em;
+  margin: 0.5em;
 }
 .student-card p {
   margin: 0;
@@ -91,8 +91,12 @@
   display: none;
 }
 .collapsible .student-grades {
-  padding-left: 10.1em;
+  padding-left: 1em;
   margin-top: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 5em;
 }
 .collapsible .student-grades li {
   border: none;
@@ -102,14 +106,23 @@
   display: inline;
 }
 .collapsible .add-tag {
-  width: 30%;
-  margin-left: 9.8em;
-  padding-left: 0.4em;
+  width: 100%;
+  padding-left: 1em;
+  padding-bottom: 0.3em;
+}
+.collapsible form:after {
+  content: "";
+  display: block;
+  width: 67px;
+  border-bottom: 1px solid black;
+  margin: 0;
+  margin-left: 1.2em;
+  margin-bottom: 1em;
 }
 .tags {
-  width: 50%;
+  width: 95%;
   display: flex;
-  margin-left: 9.9em;
+  margin-left: 0.8em;
   flex-wrap: wrap;
 }
 .tags p {
@@ -118,4 +131,110 @@
   padding: 0.5em;
   margin: 0.25em;
   border-radius: 3px;
+}
+
+@media (min-width: 375px) {
+  .student-card img {
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media (min-width: 425px) {
+  .student-card img {
+    width: 5em;
+    height: 4em;
+  }
+}
+
+@media (min-width: 550px) {
+  .student-card img {
+    width: 8em;
+    height: auto;
+    margin: 1em;
+  }
+
+  .student-card header button {
+    font-size: 2em;
+  }
+
+  .container input {
+    padding: 0.5em 1em 0.5em 1em;
+  }
+  .collapsible .student-grades {
+    padding-left: 1.3em;
+  }
+  .collapsible .add-tag {
+    padding-left: 1.3em;
+  }
+  .collapsible form:after {
+    margin-left: 1.5em;
+  }
+}
+
+@media (min-width: 680px) {
+  .container {
+    width: 80%;
+    height: 90vh;
+    margin: 5em auto;
+  }
+  .collapsible .student-grades {
+    height: initial;
+    padding-left: 9.6em;
+    margin-top: 0;
+  }
+  .collapsible .add-tag {
+    padding-left: 9.6em;
+  }
+  .collapsible form:after {
+    margin-left: 9.5em;
+    width: 130px;
+  }
+  .student-card h3 {
+    font-size: 2em;
+  }
+  .student-details {
+    margin-left: 1em;
+  }
+  .tags {
+    width: 70%;
+    margin-left: 9.4em;
+  }
+}
+
+@media (min-width: 980px) {
+  .container {
+    width: 70%;
+  }
+  .container form:after {
+    width: 96%;
+  }
+  .collapsible .student-grades {
+    padding-left: 10em;
+  }
+  .collapsible .add-tag {
+    padding-left: 10em;
+  }
+  .collapsible form:after {
+    margin-left: 10em;
+  }
+  .student-card h3 {
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container form:after {
+    width: 97%;
+  }
+  .collapsible .student-grades {
+    padding-left: 10.5em;
+  }
+  .collapsible .add-tag {
+    padding-left: 10.5em;
+  }
+  .collapsible form:after {
+    margin-left: 10.5em;
+  }
 }
