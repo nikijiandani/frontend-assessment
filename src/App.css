@@ -2,30 +2,24 @@
   width: 100%;
   height: 100vh;
   background-color: white;
-  /* margin: 5em auto; */
   border: 1px solid lightgrey;
   border-radius: 8px;
   box-shadow: 1px 1px 1px grey;
   display: flex;
   flex-direction: column;
-  /* position: fixed; */
-  /* right: 50%; */
-  /* margin-right: -25em; */
 }
 .container .search-bar {
   width: 100%;
-  /* position: fixed; */
   background-color: white;
-  /* overflow: hidden; */
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .container input {
   box-sizing: border-box;
   width: 100%;
-  /* border: none; */
+  border: none;
   font-size: 1em;
-  /* margin: 0.5em; */
   padding: 0.5em;
+  border-radius: 8px;
 }
 .container form:after {
   content: "";
@@ -41,7 +35,6 @@
 .container ul {
   padding: 0;
   margin: 0;
-  /* margin-top: 5.9em; */
   overflow-y: scroll;
 }
 .container li {
@@ -53,7 +46,6 @@
 }
 .student-card {
   display: flex;
-  /* align-items: center; */
   padding: 0.3em;
 }
 .student-card section {
@@ -77,7 +69,6 @@
   color: black;
 }
 .student-details {
-  /* margin-left: 1em; */
   color: grey;
 }
 .student-card h3 {
@@ -116,7 +107,6 @@
 }
 .collapsible .add-tag {
   width: 100%;
-  /* margin-left: 9.8em; */
   padding-left: 1em;
   padding-bottom: 0.3em;
 }
@@ -159,7 +149,92 @@
 
 @media (min-width: 550px) {
   .student-card img {
-    width: 7em;
+    width: 8em;
     height: auto;
+    margin: 1em;
+  }
+
+  .student-card header button {
+    font-size: 2em;
+  }
+
+  .container input {
+    padding: 0.5em 1em 0.5em 1em;
+  }
+  .collapsible .student-grades {
+    padding-left: 1.3em;
+  }
+  .collapsible .add-tag {
+    padding-left: 1.3em;
+  }
+  .collapsible form:after {
+    margin-left: 1.5em;
+  }
+}
+
+@media (min-width: 680px) {
+  .container {
+    width: 80%;
+    height: 90vh;
+    margin: 5em auto;
+  }
+  .collapsible .student-grades {
+    height: initial;
+    padding-left: 9.6em;
+    margin-top: 0;
+  }
+  .collapsible .add-tag {
+    padding-left: 9.6em;
+  }
+  .collapsible form:after {
+    margin-left: 9.5em;
+    width: 130px;
+  }
+  .student-card h3 {
+    font-size: 2em;
+  }
+  .student-details {
+    margin-left: 1em;
+  }
+  .tags {
+    width: 70%;
+    margin-left: 9.4em;
+  }
+}
+
+@media (min-width: 980px) {
+  .container {
+    width: 70%;
+  }
+  .container form:after {
+    width: 96%;
+  }
+  .collapsible .student-grades {
+    padding-left: 10em;
+  }
+  .collapsible .add-tag {
+    padding-left: 10em;
+  }
+  .collapsible form:after {
+    margin-left: 10em;
+  }
+  .student-card h3 {
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container form:after {
+    width: 97%;
+  }
+  .collapsible .student-grades {
+    padding-left: 10.5em;
+  }
+  .collapsible .add-tag {
+    padding-left: 10.5em;
+  }
+  .collapsible form:after {
+    margin-left: 10.5em;
   }
 }
