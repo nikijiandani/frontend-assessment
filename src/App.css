@@ -1,31 +1,38 @@
 .container {
-  width: 50em;
-  height: 36em;
+  width: 100%;
+  height: 100vh;
   background-color: white;
-  margin: 5em auto;
+  /* margin: 5em auto; */
   border: 1px solid lightgrey;
   border-radius: 8px;
   box-shadow: 1px 1px 1px grey;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  right: 50%;
-  margin-right: -25em;
+  /* position: fixed; */
+  /* right: 50%; */
+  /* margin-right: -25em; */
 }
 .container .search-bar {
-  width: 50em;
-  position: fixed;
+  width: 100%;
+  /* position: fixed; */
   background-color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 5px;
 }
 .container input {
-  width: 95%;
-  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  /* border: none; */
   font-size: 1em;
-  border-bottom: 1px solid lightgrey;
-  margin: 0.5em;
+  /* margin: 0.5em; */
   padding: 0.5em;
+}
+.container form:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  border-bottom: 1px solid lightgray;
 }
 .container input:focus {
   outline: none;
@@ -34,7 +41,7 @@
 .container ul {
   padding: 0;
   margin: 0;
-  margin-top: 5.9em;
+  /* margin-top: 5.9em; */
   overflow-y: scroll;
 }
 .container li {
@@ -46,10 +53,12 @@
 }
 .student-card {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  padding: 0.3em;
 }
 .student-card section {
-  width: 80%;
+  width: 100%;
+  padding-top: 0.2em;
 }
 .student-card header {
   display: flex;
@@ -57,7 +66,7 @@
   align-items: baseline;
 }
 .student-card header button {
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-weight: bold;
   color: rgb(189, 189, 189);
   cursor: pointer;
@@ -68,21 +77,21 @@
   color: black;
 }
 .student-details {
-  margin-left: 1em;
+  /* margin-left: 1em; */
   color: grey;
 }
 .student-card h3 {
   text-transform: uppercase;
-  font-size: 2em;
-  margin-bottom: 0.4em;
+  font-size: 1.5em;
+  margin-bottom: 0;
   margin-top: 0;
 }
 .student-card img {
-  width: 6em;
-  height: 6em;
+  width: 2.5em;
+  height: 2.5em;
   border: 1px solid grey;
   border-radius: 50%;
-  margin: 1.5em;
+  margin: 0.5em;
 }
 .student-card p {
   margin: 0;
@@ -91,8 +100,12 @@
   display: none;
 }
 .collapsible .student-grades {
-  padding-left: 10.1em;
+  padding-left: 1em;
   margin-top: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 5em;
 }
 .collapsible .student-grades li {
   border: none;
@@ -102,14 +115,24 @@
   display: inline;
 }
 .collapsible .add-tag {
-  width: 30%;
-  margin-left: 9.8em;
-  padding-left: 0.4em;
+  width: 100%;
+  /* margin-left: 9.8em; */
+  padding-left: 1em;
+  padding-bottom: 0.3em;
+}
+.collapsible form:after {
+  content: "";
+  display: block;
+  width: 67px;
+  border-bottom: 1px solid black;
+  margin: 0;
+  margin-left: 1.2em;
+  margin-bottom: 1em;
 }
 .tags {
-  width: 50%;
+  width: 95%;
   display: flex;
-  margin-left: 9.9em;
+  margin-left: 0.8em;
   flex-wrap: wrap;
 }
 .tags p {
@@ -118,4 +141,25 @@
   padding: 0.5em;
   margin: 0.25em;
   border-radius: 3px;
+}
+
+@media (min-width: 375px) {
+  .student-card img {
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media (min-width: 425px) {
+  .student-card img {
+    width: 5em;
+    height: 4em;
+  }
+}
+
+@media (min-width: 550px) {
+  .student-card img {
+    width: 7em;
+    height: auto;
+  }
 }
