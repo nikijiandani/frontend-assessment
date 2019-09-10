@@ -2,7 +2,7 @@ import React from "react";
 
 function SearchByTag(props) {
   return (
-    <form>
+    <form onSubmit={e => e.preventDefault()}>
       <input
         type="text"
         placeholder="Search by tag"
